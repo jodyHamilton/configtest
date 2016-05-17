@@ -1,0 +1,105 @@
+build_hook_file.path: /var/www/eight/code/sites/default/fetcher.make.php
+'client.authentication class': \FetcherServices\Authentication\OpenSshKeys
+code_fetcher.class: Fetcher\CodeFetcher\Download
+code_fetcher.config: {  }
+code_fetcher.vcs_mapping:
+  git: Fetcher\CodeFetcher\VCS\Git
+configuration.ephemeral:
+  - initialized
+  - simulate
+  - verbose
+  - environment.remote
+  - data.admin.user.password
+  - database.newly_created
+configurators:
+  - \Fetcher\Configurator\Drush
+  - \Fetcher\Configurator\DrupalVersion
+'database class': \Fetcher\DB\Mysql
+database.admin.port: null
+database.admin.user.name: null
+database.admin.user.password: null
+database.database: eight
+database.driver: mysql
+database.hostname: localhost
+database.port: ''
+database.prefix: ''
+database.user.hostname: localhost
+database.user.name: eight
+database.user.password: pGbzif4Ds583mxgRwlIr
+database_synchronizer.class: Fetcher\DBSynchronizer\DrushSqlSync
+drush_alias.path: /home/vagrant/.drush/eight.aliases.drushrc.php
+environment.local: local
+environments: {  }
+fetcher_client.class: \Fetcher\Utility\HTTPClient
+'file synchronizer class': Fetcher\FileSynchronizer\RsyncFileSync
+hostname: eight.local
+info_fetcher.class: FetcherServices\InfoFetcher\FetcherServices
+info_fetcher.config:
+  host: 'https://extranet.zivtech.com'
+'log function': drush_log
+mysql.binary: mysql
+name: eight
+name.global: eight
+profile: standard
+profile.package: drupal-8.1.1
+rsync-binary: rsync
+'server class': \Fetcher\Server\Apache2
+server.disable_site_command: 'sudo a2dissite eight.conf'
+server.enable_site_command: 'sudo a2ensite eight.conf'
+server.host_conf_path: /etc/apache2/sites-available/eight.conf
+server.port: 80
+server.restart_command: 'sudo service apache2 reload'
+server.user: www-data
+server.vhost_available_folder: /etc/apache2/sites-available
+server.vhost_enabled_folder: /etc/apache2/sites-enabled
+server.webroot: /var/www
+settings_php.ini_set:
+  arg_separator.output: '&amp;'
+  magic_quotes_runtime: 0
+  magic_quotes_sybase: 0
+  session.cache_expire: 200000
+  session.cache_limiter: none
+  session.cookie_lifetime: 0
+  session.gc_divisor: 100
+  session.gc_probability: 1
+  session.gc_maxlifetime: 200000
+  session.save_handler: user
+  session.use_cookies: 1
+  session.use_only_cookies: 1
+  session.use_trans_sid: 0
+  url_rewriter.tags: ''
+settings_php.requires: {  }
+settings_php.snippets:
+  - '$protocol = (isset($_SERVER[''HTTPS'']) && $_SERVER[''HTTPS''] === ''on'') ? ''https://'' : ''http://'';'
+  - '$base_url = $protocol . ''eight.local'';'
+settings_php.variables:
+  conf:
+    fetcher_environment: local
+  databases:
+    default:
+      default:
+        database: eight
+        username: eight
+        password: pGbzif4Ds583mxgRwlIr
+        host: localhost
+        port: ''
+        driver: mysql
+        prefix: ''
+        namespace: Drupal\Core\Database\Driver\mysql
+  settings:
+    container_yamls:
+      - /usr/share/drush/commands/drush_fetcher/lib/Fetcher/Configurator/DrupalVersion/services.yml
+site: default
+site.code_directory: /var/www/eight/code
+site.directory: /var/www/eight/code/sites/default
+'site.info path': /var/www/eight/site_info.yaml
+site.webroot: /var/www/eight/webroot
+site.working_directory: /var/www/eight
+symlinks:
+  /var/www/eight/public_files: /var/www/eight/code/sites/default/files
+  /var/www/eight/code: /var/www/eight/webroot
+'system class': \Fetcher\System\Posix
+'system hostname': local
+task_loader.class: \Fetcher\Task\TaskLoader
+version: 8.1.1
+webroot_subdirectory: docroot
