@@ -272,7 +272,7 @@ class GitWrapper
             throw new GitException('Path to GIT_SSH wrapper script could not be resolved: ' . $wrapper);
         }
         if (!$privateKeyPath = realpath($privateKey)) {
-            throw new GitException('Path private key could not be resolved: ' . $privateKey);
+          //  throw new GitException('Path private key could not be resolved: ' . $privateKey);
         }
 
         return $this
